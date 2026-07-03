@@ -14,6 +14,6 @@ namespace TheManagementSystem.Domain.Entities
         public  string Division {  get; set; }
         public string Post {  get; set; }
         public string ServiceNumber { get; set; }
-
+        public ICollection<BillingStatement> BillingStatements { get; set; } = new List<BillingStatement>();
     }
 }

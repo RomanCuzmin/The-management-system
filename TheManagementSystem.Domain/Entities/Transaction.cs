@@ -12,5 +12,11 @@ namespace TheManagementSystem.Domain.Entities
         public DateTime Date {  get; set; }
         public string Description { get; set; }
         public TransactionType TransactionType { get; set; }
+        public int AccountId { get; set; } 
+        public int? ToAccountId { get; set; }      
+        public int? CategoryId { get; set; }
+        public Account Account { get; set; }
+        public Account ToAccount { get; set; }
+        public Category Category { get; set; }
     }
 }
