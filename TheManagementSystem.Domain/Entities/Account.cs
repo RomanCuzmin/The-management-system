@@ -18,7 +18,7 @@ namespace TheManagementSystem.Domain.Entities
         public decimal Balance => InitialBalance + Transactions?
       .Sum(t => t.TransactionType == TransactionType.Income ? t.Amount :
                 t.TransactionType == TransactionType.Expense ? -t.Amount : 0) ?? 0;
-        public ICollection<Transaction> Transactions { get; set; }
+        public ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();   
         public User User { get; set; }
     }
 }
