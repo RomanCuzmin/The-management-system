@@ -16,5 +16,9 @@ namespace TheManagemmentSystem.Infrastructure
         public DbSet<User> Users => Set<User>();
         public DbSet<Worker> Workers => Set<Worker>();
 
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        {
+        }
+
     }
 }

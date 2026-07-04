@@ -12,5 +12,6 @@ namespace TheManagementSystem.Domain.Entities
         public string Password { get; set; }
         public string PhoneNumber { get; set; }
         public NotificationType Type { get; set; }
+        public ICollection<Account> Accounts { get; set; } = new List<Account>();   
     }
 }
