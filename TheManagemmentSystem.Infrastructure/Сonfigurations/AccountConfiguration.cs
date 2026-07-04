@@ -41,10 +41,15 @@ namespace TheManagemmentSystem.Infrastructure.Сonfigurations
                    .WithOne(x => x.ToAccount)
                    .HasForeignKey(x => x.ToAccountId)
                    .OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(x => x.BillingStatements)
+                   .WithOne(x => x.Account)
+                   .HasForeignKey(x => x.AccountId)
+                   .OnDelete(DeleteBehavior.Cascade);
             builder.HasOne(x => x.User)
                    .WithMany(x => x.Accounts)
                    .HasForeignKey(x => x.UserId)
                    .OnDelete(DeleteBehavior.Cascade);
+
         }
     }
 }
