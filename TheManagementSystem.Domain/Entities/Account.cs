@@ -14,7 +14,7 @@ namespace TheManagementSystem.Domain.Entities
         public string Name { get; set; }
         public AccountType Type {  get; set; }
         public decimal InitialBalance { get; set; }
-        public string Currency {  get; set; }
+        public Currency Currency {  get; set; }
         public decimal Balance => InitialBalance + Transactions?
                                   .Sum(t => t.TransactionType == TransactionType.Income ? t.Amount :
                                   t.TransactionType == TransactionType.Expense ? -t.Amount : 0) ?? 0;

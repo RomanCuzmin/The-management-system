@@ -30,8 +30,7 @@ namespace TheManagemmentSystem.Infrastructure.Сonfigurations
                    .IsRequired();
             builder.Property(x => x.Currency)
                    .HasColumnName("Currency")
-                   .HasMaxLength(6)
-                   .IsRequired();
+                   .HasConversion<string>();
             builder.Ignore(x => x.Balance);
             builder.HasMany(x => x.Transactions)
                    .WithOne(x => x.Account)
