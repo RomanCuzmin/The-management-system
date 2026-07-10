@@ -21,7 +21,11 @@ namespace TheManagementSystem.Domain.Entities
         public decimal OtherDeductions { get; set; }
         public decimal TotalDeducted => IncomeTax + PensionContribution + OtherDeductions;
         public decimal NetAmount => TotalAccrued - TotalDeducted;
+        public Account Account { get; set; }
+        public Category Category { get; set; }
+        public Transaction Transaction { get; set; }
         public Worker Worker { get; set; }
         public User User { get; set; }
+        public ICollection<WorkDay> WorkDays { get; set; } = new List<WorkDay>();
     }
 }

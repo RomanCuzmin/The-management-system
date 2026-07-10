@@ -10,9 +10,9 @@ namespace TheManagementSystem.Domain.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public TransactionType Type { get; set; }
-        public int? ParentCategoryId { get; set; }
-        public Category ParentCategory { get; set; }
-        public ICollection<Category> SubCategories { get; set; } = new List<Category>();
+        public ICollection<Tag> Tags { get; set; } = new List<Tag>();
         public ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
+        public ICollection<Budget> Budgets { get; set; } = new List<Budget>();
+        public ICollection<BillingStatement> BillingStatements { get; set; } = new List<BillingStatement>();
     }      
 }

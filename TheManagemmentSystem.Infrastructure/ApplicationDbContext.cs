@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TheManagementSystem.Domain.Entities;
-using Task = TheManagementSystem.Domain.Entities.Task;
+
 
 namespace TheManagemmentSystem.Infrastructure
 {
@@ -11,9 +11,9 @@ namespace TheManagemmentSystem.Infrastructure
         public DbSet<Budget> Budgets => Set<Budget>();
         public DbSet<Category> Categories => Set<Category>();
         public DbSet<Tag> Tags => Set<Tag>();   
-        public DbSet<Task> Tasks => Set<Task>();
         public DbSet<Transaction> Transactions => Set<Transaction>();
         public DbSet<User> Users => Set<User>();
+        public DbSet<WorkDay> WorkDays => Set<WorkDay>();
         public DbSet<Worker> Workers => Set<Worker>();
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
