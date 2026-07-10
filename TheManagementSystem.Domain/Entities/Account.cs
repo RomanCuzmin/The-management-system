@@ -16,9 +16,10 @@ namespace TheManagementSystem.Domain.Entities
         public decimal InitialBalance { get; set; }
         public string Currency {  get; set; }
         public decimal Balance => InitialBalance + Transactions?
-      .Sum(t => t.TransactionType == TransactionType.Income ? t.Amount :
-                t.TransactionType == TransactionType.Expense ? -t.Amount : 0) ?? 0;
-        public ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();   
+                                  .Sum(t => t.TransactionType == TransactionType.Income ? t.Amount :
+                                  t.TransactionType == TransactionType.Expense ? -t.Amount : 0) ?? 0;
+        public ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
+        public ICollection<BillingStatement> BillingStatements { get; set; } = new List<BillingStatement>();
         public User User { get; set; }
     }
 }

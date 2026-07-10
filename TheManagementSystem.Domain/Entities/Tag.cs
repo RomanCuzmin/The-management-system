@@ -7,7 +7,9 @@ namespace TheManagementSystem.Domain.Entities
     public class Tag
     {
         public int Id { get; set; }
+        public int CategoryId { get; set; }
         public string Name { get; set; }
+        public Category Category { get; set; }
         public ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
     }
 }

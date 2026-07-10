@@ -8,10 +8,14 @@ namespace TheManagementSystem.Domain.Entities
     public class User
     {
         public int Id { get; set; }
-        public string Login {  get; set; }
+        public int WorkerId { get; set; }
+        public string Email {  get; set; }
         public string Password { get; set; }
         public string PhoneNumber { get; set; }
-        public NotificationType Type { get; set; }
-        public ICollection<Account> Accounts { get; set; } = new List<Account>();   
+        public NotificationType NotificationType { get; set; }
+        public Worker Worker { get; set; }
+        public ICollection<Account> Accounts { get; set; } = new List<Account>();
+        public ICollection<Budget> Budgets { get; set; } = new List<Budget>();
+        public ICollection<BillingStatement> BillingStatements { get; set; } = new List<BillingStatement>();
     }
 }
