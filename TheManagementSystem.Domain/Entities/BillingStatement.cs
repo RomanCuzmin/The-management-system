@@ -7,7 +7,7 @@ namespace TheManagementSystem.Domain.Entities
     public class BillingStatement
     {
         public int Id { get; set; }
-        public int WorkerId { get; set; }
+        public int PlaseOfWorkId {  get; set; }
         public int UserId { get; set; }
         public int AccountId { get; set; }
         public int CategoryId {  get; set; }
@@ -24,7 +24,7 @@ namespace TheManagementSystem.Domain.Entities
         public Account Account { get; set; }
         public Category Category { get; set; }
         public Transaction Transaction { get; set; }
-        public Worker Worker { get; set; }
+        public PlaseOfWork PlaseOfWork { get; set; }
         public User User { get; set; }
         public ICollection<WorkDay> WorkDays { get; set; } = new List<WorkDay>();
     }
