@@ -18,6 +18,6 @@ namespace TheManagementSystem.Domain.Entities
         public Account Account { get; set; }
         public Account ToAccount { get; set; }
         public Category Category { get; set; }
-        public List<BillingStatement> BillingStatements { get; set; } = new List<BillingStatement>();
+        public ICollection<BillingStatement> BillingStatements { get; set; } = new List<BillingStatement>();
     }
 }
