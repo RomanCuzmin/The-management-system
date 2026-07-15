@@ -9,7 +9,7 @@ namespace TheManagementSystem.Domain.Repositories
     {
         public Task<List<WorkDay>> GetAll();
         public Task<WorkDay> GetById(int id);
-        public Task<List<WorkDay>> GetByWorkerId(int workerId);
+        public Task<List<WorkDay>> GetByPlaseOfWorkId(int plaseOfWorkId);
         public Task<List<WorkDay>> GetByBillingStatementId(int billingStatementId);
         public Task<WorkDay> GetByDate(DateTime date);
         public Task<List<WorkDay>> GetByTotalWorkHours(int totalWorkHours);

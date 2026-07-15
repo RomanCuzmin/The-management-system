@@ -30,9 +30,9 @@ namespace TheManagemmentSystem.Infrastructure.Сonfigurations
             builder.Ignore(x => x.GrossEarnings);
             builder.Ignore(x => x.TaxAmount);
             builder.Ignore(x => x.NetEarnings);
-            builder.HasOne(x => x.Worker)
+            builder.HasOne(x => x.PlaseOfWork)
                    .WithMany(x => x.WorkDays)
-                   .HasForeignKey(x => x.WorkerId)
+                   .HasForeignKey(x => x.PlaseOfWorkId)
                    .OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(x => x.BillingStatement)
                    .WithMany(x => x.WorkDays)
@@ -41,4 +41,3 @@ namespace TheManagemmentSystem.Infrastructure.Сonfigurations
         }
     }
 }
-

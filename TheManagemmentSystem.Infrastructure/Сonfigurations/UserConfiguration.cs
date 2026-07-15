@@ -32,9 +32,13 @@ namespace TheManagemmentSystem.Infrastructure.Сonfigurations
             builder.Property(x => x.NotificationType)
                    .HasColumnName("NotificationType")
                    .HasConversion<string>();
-            builder.HasOne(x => x.Worker)
+            builder.HasOne(x => x.PersonalData)
                    .WithOne(x => x.User)
-                   .HasForeignKey<User>(x => x.WorkerId)
+                   .HasForeignKey<User>(x => x.PersonalDataId)
+                   .OnDelete(DeleteBehavior.Restrict);
+            builder.HasMany(x => x.PlaseOfWorks)
+                   .WithOne(x => x.User)
+                   .HasForeignKey(x => x.UserId)
                    .OnDelete(DeleteBehavior.Restrict);
             builder.HasMany(x => x.Accounts)
                    .WithOne(x => x.User)

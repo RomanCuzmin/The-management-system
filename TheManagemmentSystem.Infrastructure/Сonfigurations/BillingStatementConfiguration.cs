@@ -32,9 +32,9 @@ namespace TheManagemmentSystem.Infrastructure.Сonfigurations
             builder.Ignore(x => x.TotalAccrued);
             builder.Ignore(x => x.TotalDeducted);
             builder.Ignore(x => x.NetAmount);
-            builder.HasOne(x => x.Worker)
+            builder.HasOne(x => x.PlaseOfWork)
                    .WithMany(x => x.BillingStatements)
-                   .HasForeignKey(x => x.WorkerId)
+                   .HasForeignKey(x => x.PlaseOfWorkId)
                    .OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(x => x.User)
                    .WithMany(x => x.BillingStatements)

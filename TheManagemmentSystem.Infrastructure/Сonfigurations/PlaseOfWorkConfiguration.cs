@@ -7,29 +7,17 @@ using TheManagementSystem.Domain.Entities;
 
 namespace TheManagemmentSystem.Infrastructure.Сonfigurations
 {
-    public class WorkerConfiguration : IEntityTypeConfiguration<Worker>
+    public class PlaseOfWorkConfiguration : IEntityTypeConfiguration<PlaseOfWork>
     {
-        public void Configure(EntityTypeBuilder<Worker> builder)
+        public void Configure(EntityTypeBuilder<PlaseOfWork> builder)
         {
-            builder.ToTable("Workers");
+            builder.ToTable("PlaseOfWorks");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id)
                    .HasColumnName("Id")
                    .UseIdentityColumn();
-            builder.Property(x => x.Name)
-                   .HasColumnName("Name")
-                   .HasMaxLength(30)
-                   .IsRequired();
-            builder.Property(x => x.SurName)
-                   .HasColumnName("SurName")
-                   .HasMaxLength(30)
-                   .IsRequired();
-            builder.Property(x => x.Patronymic)
-                   .HasColumnName("Patronymic")
-                   .HasMaxLength(30)
-                   .IsRequired();
-            builder.Property(x => x.PlaseOfWork)
-                   .HasColumnName("PlaseOfWork")
+            builder.Property(x => x.Company)
+                   .HasColumnName("Company")
                    .HasMaxLength(50)
                    .IsRequired();
             builder.Property(x => x.Division)
@@ -45,18 +33,17 @@ namespace TheManagemmentSystem.Infrastructure.Сonfigurations
                    .HasMaxLength(50)
                    .IsRequired();
             builder.HasOne(x => x.User)
-                   .WithOne(x => x.Worker)
-                   .HasForeignKey<Worker>(x => x.UserId)
-                   .OnDelete(DeleteBehavior.Restrict);
-            builder.HasMany(x => x.WorkDays)
-                   .WithOne("WorkDays")
-                   .HasForeignKey(x => x.WorkerId)
+                   .WithMany(x => x.PlaseOfWorks)
+                   .HasForeignKey(x => x.User.Id)
                    .OnDelete(DeleteBehavior.Restrict);
             builder.HasMany(x => x.BillingStatements)
-                   .WithOne(x => x.Worker)
-                   .HasForeignKey(x => x.WorkerId)
+                   .WithOne(x => x.PlaseOfWork)
+                   .HasForeignKey(x => x.PlaseOfWorkId)
+                   .OnDelete(DeleteBehavior.Restrict);
+            builder.HasMany(x => x.WorkDays)
+                   .WithOne(x => x.PlaseOfWork)
+                   .HasForeignKey(x => x.PlaseOfWorkId)
                    .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
-

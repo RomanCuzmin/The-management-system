@@ -14,7 +14,7 @@ namespace TheManagementSystem.Domain.Repositories
         public Task<List<Budget>> GetByPlannedAmount(int plannedAmount);
         public Task<List<Budget>> GetByStartDate(DateTime startDate);
         public Task<List<Budget>> GetByEndDate(DateTime endDate);
-        public Task<Budget> GetByDate(DateTime startDate, DateTime endDate);
+        public Task<List<Budget>> GetByDate(DateTime startDate, DateTime endDate);
         public Task Add(Budget budgetToAdd);
         public Task Update(Budget budgetToUpdate);
         public Task Delete(Budget budgetToDelete);

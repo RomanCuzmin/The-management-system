@@ -7,7 +7,7 @@ using TheManagementSystem.Domain.Enums;
 
 namespace TheManagementSystem.Domain.Repositories
 {
-    public interface IAccountConfigurations
+    public interface IAccountRepository
     {
         public Task<List<Account>> GetAll();
         public Task<Account> GetById(int id);
