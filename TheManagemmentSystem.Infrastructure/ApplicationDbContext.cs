@@ -14,7 +14,7 @@ namespace TheManagemmentSystem.Infrastructure
         public DbSet<Transaction> Transactions => Set<Transaction>();
         public DbSet<User> Users => Set<User>();
         public DbSet<WorkDay> WorkDays => Set<WorkDay>();
-        public DbSet<Worker> Workers => Set<Worker>();
+        public DbSet<PlaseOfWork> PlaseOfWorks => Set<PlaseOfWork>();
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {

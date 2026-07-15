@@ -5,10 +5,10 @@ using TheManagementSystem.Domain.Entities;
 
 namespace TheManagementSystem.Domain.Repositories
 {
-    public interface ITagCategory
+    public interface ITagRepository
     {
         public Task<List<Tag>> GetAll();
-        public Task<Tag> GetById();
+        public Task<Tag> GetById(int id);
         public Task<Tag> GetByName(string name);
         public Task Add(Tag tagToAdd);
         public Task Update(Tag tagToUpdate);
