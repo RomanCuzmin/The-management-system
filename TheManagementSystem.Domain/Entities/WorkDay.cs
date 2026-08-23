@@ -7,9 +7,10 @@ namespace TheManagementSystem.Domain.Entities
     public class WorkDay
     {
         public int Id { get; set; }
+        public int UserId { get; set; }
         public int PlaseOfWorkId {  get; set; }
         public int BillingStatementId {  get; set; }
-        public DateTime Date { get; set; }
+        public DateOnly Date { get; set; }
         public short HourlyRate { get; set; }
         public short TotalWorkHours { get; set; }
         public short BreakHours { get; set; }
@@ -18,7 +19,8 @@ namespace TheManagementSystem.Domain.Entities
         public decimal TaxRate { get; set; } = 0.13m;
         public decimal TaxAmount => GrossEarnings * TaxRate;
         public decimal NetEarnings => GrossEarnings - TaxAmount;
-        public PlaseOfWork PlaseOfWork { get; set; }
-        public BillingStatement BillingStatement {  get; set; }
+        public User User { get; set; }
+        public PlaceOfWork PlaseOfWork { get; set; }
+        public PayStub PayStubs {  get; set; }
     }
 }

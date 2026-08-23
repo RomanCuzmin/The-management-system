@@ -8,9 +8,9 @@ using TheManagementSystem.Domain.Entities;
 
 namespace TheManagemmentSystem.Infrastructure.Сonfigurations
 {
-    public class BillingStatementConfiguration : IEntityTypeConfiguration<BillingStatement>
+    public class BillingStatementConfiguration : IEntityTypeConfiguration<PayStub>
     {
-        public void Configure(EntityTypeBuilder<BillingStatement> builder)
+        public void Configure(EntityTypeBuilder<PayStub> builder)
         {
             builder.ToTable("BillingStatements");
             builder.HasKey(x => x.Id);
@@ -33,11 +33,11 @@ namespace TheManagemmentSystem.Infrastructure.Сonfigurations
             builder.Ignore(x => x.TotalDeducted);
             builder.Ignore(x => x.NetAmount);
             builder.HasOne(x => x.PlaseOfWork)
-                   .WithMany(x => x.BillingStatements)
+                   .WithMany(x => x.PayStubs)
                    .HasForeignKey(x => x.PlaseOfWorkId)
                    .OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(x => x.User)
-                   .WithMany(x => x.BillingStatements)
+                   .WithMany(x => x.PayStubs)
                    .HasForeignKey(x => x.UserId)
                    .OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(x => x.Account)
@@ -49,11 +49,11 @@ namespace TheManagemmentSystem.Infrastructure.Сonfigurations
                    .HasForeignKey(x => x.CategoryId)
                    .OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(x => x.Transaction)
-                   .WithMany(x => x.BillingStatements)
+                   .WithMany(x => x.PayStubs)
                    .HasForeignKey(x => x.TransactionId)
                    .OnDelete(DeleteBehavior.Restrict);
             builder.HasMany(x => x.WorkDays)
-                   .WithOne(x => x.BillingStatement)
+                   .WithOne(x => x.PayStubs)
                    .HasForeignKey(x => x.BillingStatementId)
                    .OnDelete(DeleteBehavior.Restrict); 
         }

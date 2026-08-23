@@ -48,7 +48,7 @@ namespace TheManagemmentSystem.Infrastructure.Сonfigurations
                    .WithOne(x => x.User)
                    .HasForeignKey(x => x.UserId)
                    .OnDelete(DeleteBehavior.Restrict);
-            builder.HasMany(x => x.BillingStatements)
+            builder.HasMany(x => x.PayStubs)
                    .WithOne(x => x.User)
                    .HasForeignKey(x => x.UserId)
                    .OnDelete(DeleteBehavior.Restrict);
