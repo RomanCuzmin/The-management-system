@@ -33,14 +33,14 @@ namespace TheManagemmentSystem.Infrastructure.Сonfigurations
                    .HasForeignKey(x => x.AccountId)
                    .OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(x => x.ToAccount)
-                   .WithMany(x => x.Transactions)
+                   .WithMany()
                    .HasForeignKey(x => x.ToAccountId)
                    .OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(x => x.Category)
                    .WithMany(x => x.Transactions)
                    .HasForeignKey(x => x.CategoryId)
                    .OnDelete(DeleteBehavior.Restrict);
-            builder.HasMany(x => x.BillingStatements)
+            builder.HasMany(x => x.PayStubs)
                    .WithOne(x => x.Transaction)
                    .OnDelete(DeleteBehavior.Restrict);
         }

@@ -10,7 +10,7 @@ namespace TheManagementSystem.Domain.Entities
     public class Account
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
         public string Name { get; set; }
         public AccountType Type {  get; set; }
         public decimal InitialBalance { get; set; }
@@ -19,7 +19,7 @@ namespace TheManagementSystem.Domain.Entities
                                   .Sum(t => t.TransactionType == TransactionType.Income ? t.Amount :
                                   t.TransactionType == TransactionType.Expense ? -t.Amount : 0) ?? 0;
         public ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
-        public ICollection<BillingStatement> BillingStatements { get; set; } = new List<BillingStatement>();
-        public User User { get; set; }
+        public ICollection<PayStub> BillingStatements { get; set; } = new List<PayStub>();
+        public User? User { get; set; }
     }
 }

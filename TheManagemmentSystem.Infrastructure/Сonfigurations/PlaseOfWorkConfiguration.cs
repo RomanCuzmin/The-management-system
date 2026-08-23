@@ -7,9 +7,9 @@ using TheManagementSystem.Domain.Entities;
 
 namespace TheManagemmentSystem.Infrastructure.Сonfigurations
 {
-    public class PlaseOfWorkConfiguration : IEntityTypeConfiguration<PlaseOfWork>
+    public class PlaseOfWorkConfiguration : IEntityTypeConfiguration<PlaceOfWork>
     {
-        public void Configure(EntityTypeBuilder<PlaseOfWork> builder)
+        public void Configure(EntityTypeBuilder<PlaceOfWork> builder)
         {
             builder.ToTable("PlaseOfWorks");
             builder.HasKey(x => x.Id);
@@ -34,9 +34,9 @@ namespace TheManagemmentSystem.Infrastructure.Сonfigurations
                    .IsRequired();
             builder.HasOne(x => x.User)
                    .WithMany(x => x.PlaseOfWorks)
-                   .HasForeignKey(x => x.User.Id)
+                   .HasForeignKey(x => x.UserId)
                    .OnDelete(DeleteBehavior.Restrict);
-            builder.HasMany(x => x.BillingStatements)
+            builder.HasMany(x => x.PayStubs)
                    .WithOne(x => x.PlaseOfWork)
                    .HasForeignKey(x => x.PlaseOfWorkId)
                    .OnDelete(DeleteBehavior.Restrict);

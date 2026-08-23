@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TheManagementSystem.Domain.Entities
 {
-    public class BillingStatement
+    public class PayStub
     {
         public int Id { get; set; }
         public int PlaseOfWorkId {  get; set; }
@@ -24,7 +24,7 @@ namespace TheManagementSystem.Domain.Entities
         public Account Account { get; set; }
         public Category Category { get; set; }
         public Transaction Transaction { get; set; }
-        public PlaseOfWork PlaseOfWork { get; set; }
+        public PlaceOfWork PlaseOfWork { get; set; }
         public User User { get; set; }
         public ICollection<WorkDay> WorkDays { get; set; } = new List<WorkDay>();
     }

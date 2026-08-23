@@ -34,7 +34,7 @@ namespace TheManagemmentSystem.Infrastructure.Сonfigurations
                    .WithMany(x => x.WorkDays)
                    .HasForeignKey(x => x.PlaseOfWorkId)
                    .OnDelete(DeleteBehavior.Restrict);
-            builder.HasOne(x => x.BillingStatement)
+            builder.HasOne(x => x.PayStubs)
                    .WithMany(x => x.WorkDays)
                    .HasForeignKey(x => x.BillingStatementId)
                    .OnDelete(DeleteBehavior.Restrict);
