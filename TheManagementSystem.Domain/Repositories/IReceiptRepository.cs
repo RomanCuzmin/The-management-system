@@ -9,28 +9,28 @@ namespace TheManagementSystem.Domain.Repositories
     public interface IReceiptRepository
     {
         public Task<List<Receipt>> GetAllReceiptsAsync();
-        public Task<Receipt> GetReceiptByIdAsync(int id);
+        public Task<Receipt?> GetReceiptByIdAsync(int id);
         public Task<List<Receipt>> GetReceiptsByCategoryIdAsync(int categoryId);
         public Task<List<Receipt>> GetReceiptsByDateAsync(DateOnly date);
         public Task<List<Receipt>> GetReceiptsByStoreNameAsync(string storeName);
         public Task<List<Receipt>> GetReceiptsByTotalAmountAsync(decimal  totalAmount);
         public Task<List<Receipt>> GetReceiptsByPaymentMethodAsync(PaymentMethod paymentMenthod);
         public Task<List<Receipt>> GetReceiptsByUserIdAsync(int userId);
-        public Task<Receipt> GetReceiptByIdAndUserIdAsync(int id, int userId);
+        public Task<Receipt?> GetReceiptByIdAndUserIdAsync(int id, int userId);
         public Task<List<Receipt>> GetReceiptsByCategoryIdAndUserIdAsync(int categoryId, int userId);
         public Task<List<Receipt>> GetReceiptsByDateAndUserIdAsync(DateOnly date, int userId);
         public Task<List<Receipt>> GetReceiptsByStoreNameAndUserIdAsync(string storeName, int userId);
         public Task<List<Receipt>> GetReceiptsByTotalAmountAndUserIdAsync(decimal totalAmount, int userId);
         public Task<List<Receipt>> GetReceiptsByPaymentMethodAndUserIdAsync(PaymentMethod paymentMenthod, int userId);
         public Task<List<Receipt>> GetAllReceiptsWithDetailsAsync();
-        public Task<Receipt> GetReceiptByIdWithDetailsAsync(int id);
+        public Task<Receipt?> GetReceiptByIdWithDetailsAsync(int id);
         public Task<List<Receipt>> GetReceiptsByCategoryIdWithDetailsAsync(int categoryId);
         public Task<List<Receipt>> GetReceiptsByDateWithDetailsAsync(DateOnly date);
         public Task<List<Receipt>> GetReceiptsByStoreNameWithDetailsAsync(string storeName);
         public Task<List<Receipt>> GetReceiptsByTotalAmountWithDetailsAsync(decimal totalAmount);
         public Task<List<Receipt>> GetReceiptsByPaymentMethodWithDetailsAsync(PaymentMethod paymentMenthod);
         public Task<List<Receipt>> GetReceiptsByUserIdWithDetailsAsync(int userId);
-        public Task<Receipt> GetReceiptByIdAndUserIdWithDetailsAsync(int id, int userId);
+        public Task<Receipt?> GetReceiptByIdAndUserIdWithDetailsAsync(int id, int userId);
         public Task<List<Receipt>> GetReceiptsByCategoryIdAndUserIdWithDetailsAsync(int categoryId, int userId);
         public Task<List<Receipt>> GetReceiptsByDateAndUserIdWithDetailsAsync(DateOnly date, int userId);
         public Task<List<Receipt>> GetReceiptsByStoreNameAndUserIdWithDetailsAsync(string storeName, int userId);

@@ -10,7 +10,6 @@ namespace TheManagemmentSystem.Infrastructure.Repositories
 
         // Конструктор репозитория PayStubRepository
         public PayStubRepository(ApplicationDbContext context) => _context = context ?? throw new ArgumentNullException(nameof(context));
-
         #region Методы для получения расчетных листов
         // Асинхронный метод для получения всех расчетных листов из базы данных
         public async Task<List<PayStub>> GetAllPayStubsAsync() => await _context.PayStubs.ToListAsync();

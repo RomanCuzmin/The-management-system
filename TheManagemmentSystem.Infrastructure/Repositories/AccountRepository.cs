@@ -43,21 +43,21 @@ namespace TheManagemmentSystem.Infrastructure.Repositories
         // Асинхронный метод для получения счетов по имени с транзакциями из базы данных
         public async Task<List<Account>> GetAccountsByNameWithTransactionsAsync(string name) => await _context.Accounts.Include(x => x.Transactions).Where(x => x.Name == name).ToListAsync();
         // Асинхронный метод для получения счетов по типу с транзакциями из базы данных
-        public Task<List<Account>> GetAccountsByTypeWithTransactionsAsync(AccountType type) => _context.Accounts.Where(x => x.Type == type).ToListAsync();
+        public Task<List<Account>> GetAccountsByTypeWithTransactionsAsync(AccountType type) => _context.Accounts.Include(x => x.Transactions).Where(x => x.Type == type).ToListAsync();
         // Асинхронный метод для получения счетов по валюте с транзакциями из базы данных
         public async Task<List<Account>> GetAccountsByCurrencyWithTransactionsAsync(Currency currency) => await _context.Accounts.Include(x => x.Transactions).Where(x => x.Currency == currency).ToListAsync();
         #endregion
         #region Методы для получения счетов пользователя с транзакциями 
         // Асинхронный метод для получения счетов пользователя с транзакциями из  базы данных 
-        public async Task<List<Account>> GetAccountsByUserIdWithTransactionsAsync(int userId) => await _context.Accounts.Include(x => x.Transactions).Where(x => x.UserId == userId).ToListAsync();
+        public async Task<List<Account>> GetUserAccountsWithTransactionsAsync(int userId) => await _context.Accounts.Include(x => x.Transactions).Where(x => x.UserId == userId).ToListAsync();
         // Асинхронный метод для получения счета пользователя по id с транзакциями из базы данных
-        public async Task<Account?> GetAccountByIdAndUserIdWithTransactionsAsync(int userId, int id) => await _context.Accounts.Include(x => x.Transactions).SingleOrDefaultAsync(x => x.UserId == userId && x.Id == id);
+        public async Task<Account?> GetUserAccountByIdWithTransactionsAsync(int userId, int id) => await _context.Accounts.Include(x => x.Transactions).SingleOrDefaultAsync(x => x.UserId == userId && x.Id == id);
         // Асинхронный метод для получения счета пользователя по именни  с транзакциями 
-        public async Task<Account?> GetAccountByNameAndUserIdWithTransactionsAsync(int userId, string name) => await _context.Accounts.Include(x => x.Transactions).SingleOrDefaultAsync(x => x.UserId == userId && x.Name == name);
+        public async Task<Account?> GetUserAccountByNameWithTransactionsAsync(int userId, string name) => await _context.Accounts.Include(x => x.Transactions).SingleOrDefaultAsync(x => x.UserId == userId && x.Name == name);
         // Асинхронный метод для получения счетов пользователя по типу с транзакциями 
-        public async Task<List<Account>> GetAccountsByTypeAndUserIdWithTransactionsAsync(int userId, AccountType type) => await _context.Accounts.Include(x => x.Transactions).Where(x => x.UserId == userId && x.Type == type).ToListAsync();
+        public async Task<List<Account>> GetUserAccountsByTypeWithTransactionsAsync(int userId, AccountType type) => await _context.Accounts.Include(x => x.Transactions).Where(x => x.UserId == userId && x.Type == type).ToListAsync();
         // Асинхронный метод для получения счетов пользователя по валюте с транзакциями
-        public async Task<List<Account>> GetAccountsByCurrencyAndUserIdWithTransactionsAsync(int userId, Currency currency) => await _context.Accounts.Include(x => x.Transactions).Where(x => x.UserId == userId && x.Currency == currency).ToListAsync();
+        public async Task<List<Account>> GetUserAccountsByCurrencyWithTransactionsAsync(int userId, Currency currency) => await _context.Accounts.Include(x => x.Transactions).Where(x => x.UserId == userId && x.Currency == currency).ToListAsync();
         #endregion
         #region Методы  для добавления, обновления, удаления акаунта с сохранением или без
         // Асинхронный метод для добавления счета в базу данных без сохранения

@@ -32,12 +32,10 @@ namespace TheManagemmentSystem.Infrastructure.Сonfigurations
                    .HasColumnName("Currency")
                    .HasConversion<string>();
             builder.Ignore(x => x.Balance);
-            builder.HasMany(x => x.Transactions) 
+            builder.HasMany(x => x.Transactions)
                    .WithOne(x => x.Account)
                    .HasForeignKey(x => x.AccountId)
                    .OnDelete(DeleteBehavior.Restrict);
-
-          
             builder.HasMany(x => x.BillingStatements)
                    .WithOne(x => x.Account)
                    .HasForeignKey(x => x.AccountId)

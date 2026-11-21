@@ -8,28 +8,28 @@ namespace TheManagementSystem.Domain.Repositories
     public interface IReceiptItemRepository
     {
         public Task<List<ReceiptItem>> GetAllReceiptItemsAsync();
-        public Task<ReceiptItem> GetReceiptItemByIdAsync(int id);
+        public Task<ReceiptItem?> GetReceiptItemByIdAsync(int id);
         public Task<List<ReceiptItem>> GetReceiptItemsByTagIdAsync(int tagId);
         public Task<List<ReceiptItem>> GetReceiptItemsByReceiptIdAsync(int receiptId);
         public Task<List<ReceiptItem>> GetReceiptItemsByNameAsync(string name);
         public Task<List<ReceiptItem>> GetReceiptItemsByQuantityAsync(decimal  quantity);
         public Task<List<ReceiptItem>> GetReceiptItemsByUnitPriceAsync(decimal totalPrice);
         public Task<List<ReceiptItem>> GetReceiptItemsByUserIdAsync(int userId);
-        public Task<ReceiptItem> GetReceiptItemByIdAndUserIdAsync(int id, int userId);
+        public Task<ReceiptItem?> GetReceiptItemByIdAndUserIdAsync(int id, int userId);
         public Task<List<ReceiptItem>> GetReceiptItemsByTagIdAndUserIdAsync(int tagId, int userId);
         public Task<List<ReceiptItem>> GetReceiptItemsByReceiptIdAndUserIdAsync(int receiptId, int userId);
         public Task<List<ReceiptItem>> GetReceiptItemsByNameAndUserIdAsync(string name, int userId);
         public Task<List<ReceiptItem>> GetReceiptItemsByQuantityAndUserIdAsync(decimal quantity, int userId);
         public Task<List<ReceiptItem>> GetReceiptItemsByUnitPriceAndUserIdAsync(decimal totalPrice, int userId);
         public Task<List<ReceiptItem>> GetAllReceiptItemsWithDetailsAsync();
-        public Task<ReceiptItem> GetReceiptItemByIdWithDetailsAsync(int id);
+        public Task<ReceiptItem?> GetReceiptItemByIdWithDetailsAsync(int id);
         public Task<List<ReceiptItem>> GetReceiptItemsByTagIdWithDetailsAsync(int tagId);
         public Task<List<ReceiptItem>> GetReceiptItemsByReceiptIdWithDetailsAsync(int receiptId);
         public Task<List<ReceiptItem>> GetReceiptItemsByNameWithDetailsAsync(string name);
         public Task<List<ReceiptItem>> GetReceiptItemsByQuantityWithDetailsAsync(decimal quantity);
         public Task<List<ReceiptItem>> GetReceiptItemsByUnitPriceWithDetailsAsync(decimal totalPrice);
         public Task<List<ReceiptItem>> GetReceiptItemsByUserIdWithDetailsAsync(int userId);
-        public Task<ReceiptItem> GetReceiptItemByIdAndUserIdWithDetailsAsync(int id, int userId );
+        public Task<ReceiptItem?> GetReceiptItemByIdAndUserIdWithDetailsAsync(int id, int userId );
         public Task<List<ReceiptItem>> GetReceiptItemsByTagIdAndUserIdWithDetailsAsync(int tagId, int userId);
         public Task<List<ReceiptItem>> GetReceiptItemsByReceiptIdAndUserIdWithDetailsAsync(int receiptId, int userId);
         public Task<List<ReceiptItem>> GetReceiptItemsByNameAndUserIdWithDetailsAsync(string name, int userId);

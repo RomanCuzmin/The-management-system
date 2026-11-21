@@ -13,52 +13,25 @@ namespace TheManagemmentSystem.Infrastructure.Repositories.Implementations
     {
         private readonly ApplicationDbContext _context;
 
-        // Конструктор
-        public UserRepository(ApplicationDbContext context)
-        {
-            _context = context;
-        }
-
-        // Получение всех пользователей
-        public async Task<List<User>> GetAll() => await _context.Users.ToListAsync();
-
-        // Получение пользователя по id
-        public async Task<User> GetById(int id) => await _context.Users.SingleOrDefaultAsync(x => x.Id == id);
-
-        // Получение пользователя по email
-        public async Task<User> GetByEmail(string email) => await _context.Users.SingleOrDefaultAsync(x => x.Email == email);
-
-        // Получение пользователя по  email и паролю
-        public async Task<User> GetByEmailAndPassword(string email, string password) => await _context.Users.SingleOrDefaultAsync(x => x.Email == email && x.Password == password);
-        
-        // Получение пользователя по типу уведомлений
-        public async Task<List<User>> GetByNotificationType(NotificationType notificationType) => await _context.Users.Where(x => x.NotificationType == notificationType).ToListAsync();
-
-        // Получение пользователя по номеру телефона
-        public async Task<User> GetByPhoneNumber(string phoneNumber) => await _context.Users.SingleOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
-
-        // Добавление пользователя
-        public async Task AddAndSave(User userToAdd)
-        {
-            await _context.Users.AddAsync(userToAdd);
-            await _context.SaveChangesAsync();
-        }
-
-        // Обновление пользователя
-        public async Task UpdateAndSave(User userToUpdate)
-        {
-            _context.Users.Update(userToUpdate);
-            await _context.SaveChangesAsync();
-        }
-
-        // Удаление пользователя
-        public async Task DeleteAndSave(User userToDelete)
-        {
-            _context.Users.Remove(userToDelete);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task<List<User>> GetAllWithDetails() => await _context.Users
+        // Конструктор репозитория UserRepository
+        public UserRepository(ApplicationDbContext context) => _context = context ?? throw new ArgumentNullException(nameof(context));
+        #region Методы для получения пользователей
+        // Асинхронный метод для получения всех пользователей
+        public async Task<List<User>> GetAllUsersAsync() => await _context.Users.ToListAsync();
+        // Асинхронный метод для получения пользователя по id
+        public async Task<User?> GetUserByIdAsync(int id) => await _context.Users.SingleOrDefaultAsync(x => x.Id == id);
+        // Асинхронный метод для получения пользователя по email
+        public async Task<User?> GetUserByEmailAsync(string email) => await _context.Users.SingleOrDefaultAsync(x => x.Email == email);
+        // Асинхронный метод для получения пользователя по email и паролю
+        public async Task<User?> GetUserByEmailAndPasswordAsync(string email, string password) => await _context.Users.SingleOrDefaultAsync(x => x.Email == email && x.Password == password);
+        // Асинхронный метод для получения пользователей по типу уведомлений
+        public async Task<List<User>> GetUsersByNotificationTypeAsync(NotificationType notificationType) => await _context.Users.Where(x => x.NotificationType == notificationType).ToListAsync();
+        // Асинхронный метод для получения пользователя по номеру телефона
+        public async Task<User?> GetUserByPhoneNumberAsync(string phoneNumber) => await _context.Users.SingleOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
+        #endregion
+        #region Методы для получения пользователя с загруженными связанными данными
+        // Асинхронный метод для получения пользователей с загруженными связанными данными
+        public async Task<List<User>> GetAllUsersWithDetailsAsync() => await _context.Users
                                                                            .Include(x => x.Accounts)
                                                                            .Include(x => x.Budgets)
                                                                            .Include(x => x.Categories)
@@ -71,8 +44,8 @@ namespace TheManagemmentSystem.Infrastructure.Repositories.Implementations
                                                                            .Include(x => x.Transactions)
                                                                            .Include(x => x.WorkDays)
                                                                            .ToListAsync();
-
-        public async Task<User?> GetByIdWithDetails(int id) => await _context.Users
+        // Асинхронный метод для получения пользователя по id с загруженными связанными данными
+        public async Task<User?> GetUserByIdWithDetailsAsync(int id) => await _context.Users
                                                                       .Include(x => x.Accounts)
                                                                       .Include(x => x.Budgets)
                                                                       .Include(x => x.Categories)
@@ -85,8 +58,8 @@ namespace TheManagemmentSystem.Infrastructure.Repositories.Implementations
                                                                       .Include(x => x.Transactions)
                                                                       .Include(x => x.WorkDays)
                                                                       .SingleOrDefaultAsync(x => x.Id == id);
-
-        public async Task<User?> GetByEmaiWithDetailsl(string email) => await _context.Users
+        // Асинхронный метод для получения пользователя по email с загруженными связанными данными
+        public async Task<User?> GetUserByEmailWithDetailsAsync(string email) => await _context.Users
                                                                                       .Include(x => x.Accounts)
                                                                                       .Include(x => x.Budgets)
                                                                                       .Include(x => x.Categories)
@@ -99,8 +72,8 @@ namespace TheManagemmentSystem.Infrastructure.Repositories.Implementations
                                                                                       .Include(x => x.Transactions)
                                                                                       .Include(x => x.WorkDays)
                                                                                       .SingleOrDefaultAsync(x => x.Email == email);
-
-        public async Task<User?> GetByEmailAndPasswordWithDetails(string email, string password) => await _context.Users
+        // Асинхронный метод для получения пользователя по email и паролю с загруженными связанными данными
+        public async Task<User?> GetUserByEmailAndPasswordWithDetailsAsync(string email, string password) => await _context.Users
                                                                                                                   .Include(x => x.Accounts)
                                                                                                                   .Include(x => x.Budgets)
                                                                                                                   .Include(x => x.Categories)
@@ -113,8 +86,8 @@ namespace TheManagemmentSystem.Infrastructure.Repositories.Implementations
                                                                                                                   .Include(x => x.Transactions)
                                                                                                                   .Include(x => x.WorkDays)
                                                                                                                   .SingleOrDefaultAsync(x => x.Email == email && x.Password == password);
-
-        public async Task<User?> GetByPhoneNumberWithDetails(string phoneNumber) => await _context.Users
+        // Асинхронный метод для получения пользователя по номеру телефона с загруженными связанными данными
+        public async Task<User?> GetUserByPhoneNumberWithDetailsAsync(string phoneNumber) => await _context.Users
                                                                                                   .Include(x => x.Accounts)
                                                                                                   .Include(x => x.Budgets)
                                                                                                   .Include(x => x.Categories)
@@ -127,7 +100,8 @@ namespace TheManagemmentSystem.Infrastructure.Repositories.Implementations
                                                                                                   .Include(x => x.Transactions)
                                                                                                   .Include(x => x.WorkDays)
                                                                                                   .SingleOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
-        public async Task<List<User>> GetByNotificationTypeWithDetails(NotificationType notificationType) => await _context.Users
+        // Асинхронный метод для получения пользователя по типу уведомлений с загруженными связанными данными 
+        public async Task<List<User>> GetUsersByNotificationTypeWithDetailsAsync(NotificationType notificationType) => await _context.Users
                                                                                                                            .Include(x => x.Accounts)
                                                                                                                            .Include(x => x.Budgets)
                                                                                                                            .Include(x => x.Categories)
@@ -141,11 +115,35 @@ namespace TheManagemmentSystem.Infrastructure.Repositories.Implementations
                                                                                                                            .Include(x => x.WorkDays)
                                                                                                                            .Where(x => x.NotificationType == notificationType)
                                                                                                                            .ToListAsync();
+        #endregion
+        #region Методы для добавления, обновления или удаления  с сохранением или без
+        // Асинхронный метод для добавления пользователя без сохранения
+        public async Task AddUserAsync(User userToAdd) => await _context.Users.AddAsync(userToAdd);
+        // Метод для обновления пользователя без сохраннения
+        public void UpdateUser(User userToUpdate) => _context.Users.Update(userToUpdate);
+        // Метод для удаления пользователя без сохранения
+        public void DeleteUser(User userToDelete) => _context.Users.Remove(userToDelete);
 
-        public async Task Add(User userToAdd) => await _context.Users.AddAsync(userToAdd);
+        // Асинхронный метод для добавления пользователя с сохранением
+        public async Task AddUserAndSaveAsync(User userToAdd)
+        {
+            await _context.Users.AddAsync(userToAdd);
+            await _context.SaveChangesAsync();
+        }
 
-        public void Update(User userToUpdate) => _context.Users.Update(userToUpdate);
+        // Асинхронный метод для обновления пользователя с сохранением
+        public async Task UpdateUserAndSaveAsync(User userToUpdate)
+        {
+            _context.Users.Update(userToUpdate);
+            await _context.SaveChangesAsync();
+        }
 
-        public void Delete(User userToDelete) => _context.Users.Remove(userToDelete);
+        // Асинхронный метод для удаления пользователя с сохранением
+        public async Task DeleteUserAndSaveAsync(User userToDelete)
+        {
+            _context.Users.Remove(userToDelete);
+            await _context.SaveChangesAsync();
+        }
+        #endregion
     }
 }

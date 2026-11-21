@@ -13,5 +13,6 @@ namespace TheManagementSystem.Domain.Entities
         public User User { get; set; }
         public Category Category { get; set; }
         public ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
+        public ICollection<ReceiptItem> ReceiptItems { get; set; } = new List<ReceiptItem>();
     }
 }

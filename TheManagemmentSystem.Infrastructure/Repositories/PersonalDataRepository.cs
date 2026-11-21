@@ -10,12 +10,8 @@ namespace TheManagemmentSystem.Infrastructure.Repositories
     public class PersonalDataRepository : IPersonalDataRepository
     {
         private readonly ApplicationDbContext _context;
-
-        public PersonalDataRepository(ApplicationDbContext context)
-        {
-            _context = context;
-        }
-
+        // Конструктор репозитория PersonalDataRepository 
+        public PersonalDataRepository(ApplicationDbContext context) => _context = context ?? throw new ArgumentNullException(nameof(context));
         #region Методы для получения персональных данных
         // Асинхронный метод для получения всех персональных данных
         public async Task<List<PersonalData>> GetAllPersonalDataAsync() => await _context.PersonalData.ToListAsync();

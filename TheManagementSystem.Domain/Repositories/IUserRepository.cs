@@ -8,23 +8,23 @@ namespace TheManagementSystem.Domain.Repositories
 {
     public interface IUserRepository
     {
-        public Task<List<User>> GetAll();
-        public Task<User> GetById(int id);
-        public Task<User> GetByEmail(string email);
-        public Task<User> GetByEmailAndPassword(string email, string password);
-        public Task<User> GetByPhoneNumber(string phoneNumber);
-        public Task<List<User>> GetByNotificationType(NotificationType notificationType);
-        public Task<List<User>> GetAllWithDetails();
-        public Task<User> GetByIdWithDetails(int id);
-        public Task<User> GetByEmaiWithDetailsl(string email);
-        public Task<User> GetByEmailAndPasswordWithDetails(string email, string password);
-        public Task<User> GetByPhoneNumberWithDetails(string phoneNumber);
-        public Task<List<User>> GetByNotificationTypeWithDetails(NotificationType notificationType);
-        public Task Add(User userToAdd);
-        public void Update(User userToUpdate);
-        public void Delete(User userToDelete);
-        public Task AddAndSave(User userToAdd);
-        public Task UpdateAndSave(User userToUpdate);
-        public Task DeleteAndSave(User userToDelete);
+        public Task<List<User>> GetAllUsersAsync();
+        public Task<User?> GetUserByIdAsync(int id);
+        public Task<User?> GetUserByEmailAsync(string email);
+        public Task<User?> GetUserByEmailAndPasswordAsync(string email, string password);
+        public Task<User?> GetUserByPhoneNumberAsync(string phoneNumber);
+        public Task<List<User>> GetUsersByNotificationTypeAsync(NotificationType notificationType);
+        public Task<List<User>> GetAllUsersWithDetailsAsync();
+        public Task<User?> GetUserByIdWithDetailsAsync(int id);
+        public Task<User?> GetUserByEmailWithDetailsAsync(string email);
+        public Task<User?> GetUserByEmailAndPasswordWithDetailsAsync(string email, string password);
+        public Task<User?> GetUserByPhoneNumberWithDetailsAsync(string phoneNumber);
+        public Task<List<User>> GetUsersByNotificationTypeWithDetailsAsync(NotificationType notificationType);
+        public Task AddUserAsync(User userToAdd);
+        public void UpdateUser(User userToUpdate);
+        public void DeleteUser(User userToDelete);
+        public Task AddUserAndSaveAsync(User userToAdd);
+        public Task UpdateUserAndSaveAsync(User userToUpdate);
+        public Task DeleteUserAndSaveAsync(User userToDelete);
     }
 }

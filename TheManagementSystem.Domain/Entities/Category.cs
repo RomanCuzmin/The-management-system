@@ -16,5 +16,6 @@ namespace TheManagementSystem.Domain.Entities
         public ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
         public ICollection<Budget> Budgets { get; set; } = new List<Budget>();
         public ICollection<PayStub> BillingStatements { get; set; } = new List<PayStub>();
+        public ICollection<Receipt> Receipts { get; set; } = new List<Receipt>();
     }      
 }

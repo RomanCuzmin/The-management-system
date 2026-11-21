@@ -32,6 +32,22 @@ namespace TheManagemmentSystem.Infrastructure.Сonfigurations
             builder.Property(x => x.NotificationType)
                    .HasColumnName("NotificationType")
                    .HasConversion<string>();
+            builder.HasMany(x => x.Accounts)
+                   .WithOne(x => x.User)
+                   .HasForeignKey(x => x.UserId)
+                   .OnDelete(DeleteBehavior.Restrict);
+            builder.HasMany(x => x.Budgets)
+                   .WithOne(x => x.User) 
+                   .HasForeignKey(x => x.UserId) 
+                   .OnDelete(DeleteBehavior.Restrict);
+            builder.HasMany(x => x.Categories)
+                   .WithOne(x => x.User)
+                   .HasForeignKey(x => x.UserId)
+                   .OnDelete(DeleteBehavior.Restrict);
+            builder.HasMany(x => x.PayStubs)
+                   .WithOne(x => x.User)
+                   .HasForeignKey(x => x.UserId)
+                   .OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(x => x.PersonalData)
                    .WithOne(x => x.User)
                    .HasForeignKey<User>(x => x.PersonalDataId)
@@ -40,17 +56,25 @@ namespace TheManagemmentSystem.Infrastructure.Сonfigurations
                    .WithOne(x => x.User)
                    .HasForeignKey(x => x.UserId)
                    .OnDelete(DeleteBehavior.Restrict);
-            builder.HasMany(x => x.Accounts)
+            builder.HasMany(x => x.Receipts)
                    .WithOne(x => x.User)
                    .HasForeignKey(x => x.UserId)
                    .OnDelete(DeleteBehavior.Restrict);
-            builder.HasMany(x => x.Budgets)
+            builder.HasMany(x => x.ReceiptItems)
                    .WithOne(x => x.User)
                    .HasForeignKey(x => x.UserId)
                    .OnDelete(DeleteBehavior.Restrict);
-            builder.HasMany(x => x.PayStubs)
+            builder.HasMany(x => x.Tags)
                    .WithOne(x => x.User)
                    .HasForeignKey(x => x.UserId)
+                   .OnDelete(DeleteBehavior.Restrict);
+            builder.HasMany(x => x.Transactions)
+                   .WithOne(x => x.User) 
+                   .HasForeignKey(x => x.UserId) 
+                   .OnDelete(DeleteBehavior.Restrict);
+            builder.HasMany(x => x.WorkDays)
+                   .WithOne(x => x.User) 
+                   .HasForeignKey(x => x.UserId) 
                    .OnDelete(DeleteBehavior.Restrict);
         }
        
